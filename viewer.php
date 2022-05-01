@@ -10,9 +10,14 @@ class Breakfast_Delete_Debug_Log_Viewer
 
 	public function load_log()
 	{
-		if( ! empty( $_GET['viewer'] ) && 'debug-log' == $_GET['viewer'] )
+		if( ! empty( $_GET['viewer'] ) && 'debug-log' == $_GET['viewer']
+			&& current_user_can( 'manage_options' ) )
 		{
-			echo file_get_contents( Breakfast_Delete_Debug_Log_Button::debug_log_path() );
+			$path = Breakfast_Delete_Debug_Log_Button::debug_log_path();
+			if( file_exists( $path ) )
+			{
+				echo file_get_contents( $path );
+			}
 			exit;
 		}
 	}
