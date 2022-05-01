@@ -67,9 +67,17 @@ class Breakfast_Delete_Debug_Log_Button
 			)
 		);
 		$wp_admin_bar->add_node( $args );
+
+		$view_node = array(
+			'parent' => self::SLUG,
+			'id'     => 'view_debug_log',
+			'title'  => __( 'View debug.log', 'delete-debug-log-button' ),
+			'href'   => add_query_arg( 'viewer', 'debug-log', $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ),
+		);
+		$wp_admin_bar->add_node( $view_node );
 	}
 
-	private function debug_log_path()
+	public static function debug_log_path()
 	{
 		return ABSPATH . '/wp-content/debug.log';
 	}
@@ -79,7 +87,7 @@ class Breakfast_Delete_Debug_Log_Button
 	 */
 	private function show_button()
 	{
-		return current_user_can( 'manage_options' ) && file_exists( $this->debug_log_path() );
+		return current_user_can( 'manage_options' ) && file_exists( self::debug_log_path() );
 	}
 
 	function hooks()
@@ -91,6 +99,10 @@ class Breakfast_Delete_Debug_Log_Button
 
 		//Handles the AJAX request
 		add_action( 'wp_ajax_' . self::SLUG, array( $this, 'ajax_callback' ) );
+
+		include_once( __DIR__ . '/viewer.php' );
+		$viewer = new Breakfast_Delete_Debug_Log_Viewer();
+		$viewer->add_hooks();
 	}
 }
 $delete_button_293087420963742634623945 = new Breakfast_Delete_Debug_Log_Button();
