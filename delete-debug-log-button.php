@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) or exit;
+
 /**
  * Plugin Name: Delete Debug.log Button
  * Plugin URI: https://breakfast.company
