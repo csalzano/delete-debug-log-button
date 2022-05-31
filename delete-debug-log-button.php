@@ -26,7 +26,7 @@ class Breakfast_Delete_Debug_Log_Button
 			wp_send_json_error( new WP_Error( '400', 'Unable to satisfy request' ) );
 		}
 
-		unlink( ABSPATH . '/wp-content/debug.log' );
+		@unlink( ABSPATH . '/wp-content/debug.log' );
 
 		wp_send_json_success();
 		exit;
