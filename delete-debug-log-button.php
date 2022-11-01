@@ -40,7 +40,7 @@ class Breakfast_Delete_Debug_Log_Button
 			return;
 		}
 
-		wp_enqueue_script( self::SLUG, plugin_dir_url( __FILE__ ) . 'button.js' );
+		wp_enqueue_script( self::SLUG, plugin_dir_url( __FILE__ ) . 'button.min.js' );
 		wp_localize_script( self::SLUG, 'ddlb', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 			'nonce'    => wp_create_nonce( self::SLUG )
