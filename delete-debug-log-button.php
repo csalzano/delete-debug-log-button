@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) or exit;
  * Plugin Name: Delete Debug.log Button
  * Plugin URI: https://breakfast.company
  * Description: Adds a button to the Admin Bar that deletes wp-content/debug.log
- * Version: 0.2.1
+ * Version: 0.2.2
  * Author: Corey Salzano
  * Author URI: https://coreysalzano.com
  * Text Domain: delete-debug-log-button
